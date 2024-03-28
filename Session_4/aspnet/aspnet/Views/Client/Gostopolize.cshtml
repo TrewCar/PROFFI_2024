@@ -1,0 +1,30 @@
+﻿@model ClientModel
+@{
+    var users = Model.GetClients();
+}
+<div class="content">
+    <div class="info-user">
+
+    </div>
+    <h1>Гостополизвация</h1>
+    <div>
+        <label>Клиент</label>
+        <select id="user">
+            <option value="-1">Пользователь</option>
+            @foreach(var usr in users)
+            {
+                <option value="@usr[0]">@usr[1] @usr[2] @usr[3]</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Код госпотолизации</label>
+        <input type="number" />
+    </div>
+    <div>
+        <label>Дата госпотолизации</label>
+        <input type="date" />
+    </div>
+    <a href="/">Отправить</a>
+</div>
+<script src="~/js/Gost.js?v1"></script>

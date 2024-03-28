@@ -1,0 +1,32 @@
+﻿@model ClientModel
+@{
+    var user = Model.GetClientBuyID(Model.Id)[0];
+    var med_card = Model.GetInfoMedCardByUser(Model.Id)[0];
+}
+
+<div class="content">
+    <div>
+        <div id="qrcode" data="@user[0]"></div>
+        <img src="/files/image/@user[4]" />
+    </div>
+    <label>@user[1] @user[2] @user[3]</label><br />
+    <label>@(user[5] == "False" ? "Женщина" : "Мужщина")</label><br />
+    <label>Дата рождения - @user[6] возрост - @user[7] </label><br />
+    <label>Телефон - @user[8]</label><br />
+    <label>Адресс - @user[9]</label><br />
+    <div class="med-card">
+        <h1>Мед карта</h1>
+        <label>Номер полиса = @med_card[2]</label><br />
+        <label>Тип полиса = @med_card[3]</label><br />
+        <label>Дата получения мед карты = @med_card[4]</label><br />
+        <label>Диагноз = @med_card[7]</label><br />
+        <a href="/files/docs/@med_card[8]">Скачать мед-карту</a><br />
+    </div>
+
+</div>
+<script src="~/lib/qr/qrcode.js"></script>
+<script>
+    $(document).ready(function(){
+        new QRCode($(`#qrcode`)[0], $(`#qrcode`).attr(`data`));
+    })
+</script>

@@ -1,0 +1,34 @@
+﻿@model ClientModel
+@{
+    var users = Model.GetClients();
+}
+
+<table class="users">
+    <thead>
+        <tr>
+            <td>Фамилия</td>
+            <td>Имя</td>
+            <td>Отчество</td>
+            <td>Дата рождения</td>
+            <td>Гендер</td>
+            <td>Возрост</td>
+            <td>Телефон</td>
+            <td>Подробно</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in users)
+        {
+            <tr>
+                <td>@user[1]</td>
+                <td>@user[2]</td>
+                <td>@user[3]</td>
+                <td>@user[6]</td>
+                <td>@(user[5] == "False" ? "Женщина" : "Мужщина")</td>
+                <td>@user[7]</td>
+                <td>@user[8]</td>
+                <td><a href="/Client/ViewClient?id=@user[0]">Просмотр</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,258 @@
+﻿@model KoechModel
+@{
+    var list = Model.GetListKomnat();
+    List<string> result = new List<string>();
+    foreach(var item in list)
+    {
+        result.Add(item[0]);
+    }
+
+    string json = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+}
+<link rel="stylesheet" href="~/css/DragDrop.css" asp-append-version="true" />
+<h1>Перемещение пациентов в коечном фонде</h1>
+<div id="data" style="display:none;">
+    @json
+</div>
+<div class="context_menu">
+    <ul>
+        <li>
+            <button id="remove">Выписать</button>
+        </li>
+    </ul>
+</div>
+<div class="menu_add">
+    <div>
+        <label>Заселение</label>
+        <div class="selects">
+            <select id="sel_koiki">
+                <option value="none">выберите комнату</option>
+            </select>
+            <select id="sel_koika">
+                <option value="none">выберите койку</option>
+            </select>
+            <button id="insert">Заселить</button>
+        </div>
+    </div>
+</div>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <div class="content_td" id="room-1">
+                    <label for="">104</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-2">
+                    <label for="">105</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-3">
+                    <label for="">106</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-4">
+                    <label for="">107</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-5">
+                    <label for="">108</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-6">
+                    <label for="">109</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-7">
+                    <label for="">110</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7" class="coridor"></td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <div class="content_td" id="room-8">
+                    <label for="">103</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                        <div class="koika" name="koika-5">Д</div>
+                        <div class="koika" name="koika-6">Е</div>
+                    </div>
+                </div>
+            </td>
+            <td rowspan="5" class="coridor"></td>
+            <td rowspan="2">
+                <div class="content_td" id="room-9">
+                    <label for="">115</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                        <div class="koika" name="koika-5">Д</div>
+                        <div class="koika" name="koika-6">Е</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-10">
+                    <label for="">114</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div class="content_td" id="room-11">
+                    <label for="">113</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-12">
+                    <label for="">112</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-13">
+                    <label for="">111</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: unset; background-color: unset;"></td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <div class="content_td" id="room-14">
+                    <label for="">102</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                        <div class="koika" name="koika-5">Д</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-15">
+                    <label for="">116</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="content_td" id="room-16">
+                    <label for="">117</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="content_td" id="room-17">
+                    <label for="">101</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                        <div class="koika" name="koika-3">В</div>
+                        <div class="koika" name="koika-4">Г</div>
+                        <div class="koika" name="koika-5">Д</div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="content_td" id="room-18">
+                    <label for="">118</label>
+                    <div class="koiki">
+                        <div class="koika" name="koika-1">А</div>
+                        <div class="koika" name="koika-2">Б</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h1>Реальная карта коечного фонда</h1>
+<img src="~/files/KOECH.png" />
+<script src="~/js/DragDrop.js" asp-append-version="true"></script>
